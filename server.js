@@ -1,9 +1,9 @@
 // Library Imports
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
-const dotenv = require("dotenv");
+require("dotenv").config();
 const express = require("express");
-const expressServer = require("express-session");
+const session = require("express-session");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 
@@ -14,19 +14,24 @@ const feedController = require("./controllers/feed.js")
 const app = express();
 
 // Middleware
-app.set("view engine","ejs");
-app.use(express.urlencoded({extended : false}));
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride);
 app.use(morgan("dev"));
+app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true, store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }) }));
 
 // Controllers
 
 app.use("/feed", feedController);
 
 // INIT SECTION
-try {
-    app.listen(process.env.PORT);
-    console.log("--CONNECTED--")
-} catch (error) {
-    console.log(error);
+async function init() {
+    try {
+        await mongoose.connect(process.env.MONGODB_URI);
+        app.listen(process.env.PORT);
+        console.log("--CONNECTED--");
+    } catch (error) {
+        console.log(error);
+    }
 }
+init();
