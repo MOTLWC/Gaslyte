@@ -17,3 +17,13 @@ const app = express();
 
 
 // Controllers
+
+app.use("/feed", feedController);
+
+// INIT SECTION
+try {
+    app.listen(process.env.PORT);
+    console.log("--CONNECTED--")
+} catch (error) {
+    console.log(error);
+}
