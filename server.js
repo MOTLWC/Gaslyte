@@ -14,7 +14,10 @@ const feedController = require("./controllers/feed.js")
 const app = express();
 
 // Middleware
-
+app.set("view engine","ejs");
+app.use(express.urlencoded({extended : false}));
+app.use(methodOverride);
+app.use(morgan("dev"));
 
 // Controllers
 
