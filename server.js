@@ -9,7 +9,8 @@ const morgan = require("morgan");
 
 // Local imports
 const authController = require("./controllers/auth.js")
-const feedController = require("./controllers/feed.js")
+const feedController = require("./controllers/feed.js");
+const router = require("./controllers/feed.js");
 
 // Basic Setup
 const app = express();
@@ -26,6 +27,12 @@ app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: 
 app.use("/auth", authController)
 
 app.use("/feed", feedController);
+
+// Routes 
+
+app.get("/", (req, res) => {
+    res.redirect("/feed");
+});
 
 // INIT SECTION
 async function init() {
