@@ -7,8 +7,10 @@ const express = require("express");
 const router = express.Router();
 
 // Routes
-//! POST
-//! ADD
+router.get("/sign-in", (req, res) => {
+    res.render("sign-in.ejs");
+});
+
 
 // Export Module
 module.exports = router;
