@@ -23,7 +23,11 @@ router.post("/sign-in", async (req,res) => {
         console.log(req.body);
         if (!req.body.username || !req.body.password) throw("Field Not Filled");
         const userFromDB = await User.findOne({username:req.body.username});
-
+        if (req.body.username !== userFromDB.username) throw("Incorrect Account Details");
+        console.log(bcrypt.hashSync(req.body.password, 12))
+        console.log(userFromDB.password)
+        if (bcrypt.hashSync(req.body.password, 12) !== userFromDB.password) throw("Incorrect Account Details");
+        res.redirect("/feed");
     } catch (error) {
         console.log(error);
         res.render("sign-in.ejs", {errorMessage:error});
