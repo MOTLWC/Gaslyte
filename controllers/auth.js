@@ -27,7 +27,11 @@ router.post("/sign-in", async (req,res) => {
         console.log(bcrypt.hashSync(req.body.password, 12))
         console.log(userFromDB.password)
         if (!bcrypt.compareSync(req.body.password, userFromDB.password)) throw("Incorrect Account Details");
-        res.redirect("/feed");
+        req.session.user = {
+            username : userFromDB.username,
+            _id: userFromDB._id,
+        }
+        req.session.save(() => {res.redirect("/feed");});
     } catch (error) {
         console.log(error);
         res.render("sign-in.ejs", {errorMessage:error});
