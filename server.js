@@ -17,7 +17,7 @@ const app = express();
 // Middleware
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride);
+app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true, store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }) }));
 
