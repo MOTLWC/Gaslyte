@@ -30,12 +30,15 @@ router.post("/sign-in", async (req,res) => {
     }
 });
 
-router.post("/sign-up", (req,res) => {
+router.post("/sign-up", async (req,res) => {
     try{
     console.log("Sign Up");
     console.log(req.body);
-    if (!req.body.username || !req.body.password) throw("Field Not Filled");
-    if (req.body.password !== req.body.passwordCheck) throw("Passwords Do Not Match")
+    if (!req.body.username || !req.body.profileName || !req.body.password) throw("Field Not Filled");
+    if (req.body.password !== req.body.passwordCheck) throw("Passwords Do Not Match");
+    if (await User.findOne({username: req.body.username})) throw("Username Must Be Unique")
+    if (await User.findOne({profileName: req.body.profileName})) throw("Profile Name Must Be Unique")
+    await User.create({username:req.body.username, profileName: req.body.profileName, password: req.body.password})
 } catch (error) {
     console.log(error);
     res.render("sign-up.ejs", {errorMessage:error});
