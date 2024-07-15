@@ -34,9 +34,11 @@ router.post("/sign-up", (req,res) => {
     try{
     console.log("Sign Up");
     console.log(req.body);
+    if (!req.body.username || !req.body.password) throw("Field Not Filled");
+    if (req.body.password !== req.body.passwordCheck) throw("Passwords Do Not Match")
 } catch (error) {
     console.log(error);
-    res.render("sign-up.ejs");
+    res.render("sign-up.ejs", {errorMessage:error});
 }
 });
 
