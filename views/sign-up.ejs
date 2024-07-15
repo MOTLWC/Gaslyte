@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <% if (errorMessage) { %>
+    <% if (typeof(errorMessage) !== "undefined") { %>
         <h3 class="error">
             <%= errorMessage %>
         </h3>
