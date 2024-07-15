@@ -11,6 +11,7 @@ const morgan = require("morgan");
 const authController = require("./controllers/auth.js")
 const feedController = require("./controllers/feed.js");
 const router = require("./controllers/feed.js");
+const checkSession = require("./middleware/check-session.js");
 
 // Basic Setup
 const app = express();
@@ -24,8 +25,8 @@ app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: 
 
 // Controllers
 
-app.use("/auth", authController)
-
+app.use("/auth", authController);
+app.use(checkSession);
 app.use("/feed", feedController);
 
 // Routes 
