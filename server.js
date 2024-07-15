@@ -8,6 +8,7 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 
 // Local imports
+const authController = require("./controllers/auth.js")
 const feedController = require("./controllers/feed.js")
 
 // Basic Setup
@@ -21,6 +22,8 @@ app.use(morgan("dev"));
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true, store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }) }));
 
 // Controllers
+
+app.use("/auth", authController)
 
 app.use("/feed", feedController);
 
