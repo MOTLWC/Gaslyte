@@ -12,7 +12,7 @@ router.get("/sign-in", (req, res) => {
 });
 
 router.get("/sign-up", (req, res) => {
-    res.render("/sign-up.ejs");
+    res.render("sign-up.ejs");
 });
 
 router.post("/sign-in", (req,res) => {
