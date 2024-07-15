@@ -1,5 +1,6 @@
 // Library Imports
 const express = require("express");
+const bcrypt = require("bcryptjs");
 
 // Model Imports 
 
@@ -20,6 +21,7 @@ router.post("/sign-in", (req,res) => {
         console.log("Sign In");
         console.log(req.body);
         if (!req.body.username || !req.body.password) throw("Field Not Filled");
+
     } catch (error) {
         console.log(error);
         res.render("sign-in.ejs", {errorMessage:error});
