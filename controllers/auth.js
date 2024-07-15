@@ -26,7 +26,7 @@ router.post("/sign-in", async (req,res) => {
         if (req.body.username !== userFromDB.username) throw("Incorrect Account Details");
         console.log(bcrypt.hashSync(req.body.password, 12))
         console.log(userFromDB.password)
-        if (bcrypt.hashSync(req.body.password, 12) !== userFromDB.password) throw("Incorrect Account Details");
+        if (!bcrypt.compareSync(req.body.password, userFromDB.password)) throw("Incorrect Account Details");
         res.redirect("/feed");
     } catch (error) {
         console.log(error);
