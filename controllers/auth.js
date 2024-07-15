@@ -19,9 +19,10 @@ router.post("/sign-in", (req,res) => {
     try {
         console.log("Sign In");
         console.log(req.body);
+        if (!req.body.username || !req.body.password) throw("Field Not Filled");
     } catch (error) {
         console.log(error);
-        res.redirect("/auth/sign-in");
+        res.render("sign-in.ejs", {errorMessage:error});
     }
 });
 
@@ -31,7 +32,7 @@ router.post("/sign-up", (req,res) => {
     console.log(req.body);
 } catch (error) {
     console.log(error);
-    res.redirect("/auth/sign-up");
+    res.render("sign-up.ejs");
 }
 });
 
