@@ -1,9 +1,9 @@
 // Library Imports
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const User = require("../models/user.js");
 
 // Model Imports 
+const User = require("../models/user.js");
 
 // Controller Setup
 const router = express.Router();

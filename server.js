@@ -10,7 +10,7 @@ const morgan = require("morgan");
 // Local imports
 const authController = require("./controllers/auth.js")
 const feedController = require("./controllers/feed.js");
-const router = require("./controllers/feed.js");
+const profileController = require("./controllers/profile.js");
 const checkSession = require("./middleware/check-session.js");
 
 // Basic Setup
@@ -28,6 +28,7 @@ app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: 
 app.use("/auth", authController);
 app.use(checkSession);
 app.use("/feed", feedController);
+app.use("/profile", profileController);
 
 // Routes 
 
