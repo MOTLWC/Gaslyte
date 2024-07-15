@@ -1,6 +1,7 @@
 // Library Imports
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const User = require("../models/user.js");
 
 // Model Imports 
 
@@ -16,11 +17,12 @@ router.get("/sign-up", (req, res) => {
     res.render("sign-up.ejs");
 });
 
-router.post("/sign-in", (req,res) => {
+router.post("/sign-in", async (req,res) => {
     try {
         console.log("Sign In");
         console.log(req.body);
         if (!req.body.username || !req.body.password) throw("Field Not Filled");
+        const userFromDB = await User.findOne({username:req.body.username});
 
     } catch (error) {
         console.log(error);
