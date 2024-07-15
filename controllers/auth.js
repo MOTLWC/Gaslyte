@@ -38,8 +38,8 @@ router.post("/sign-up", async (req,res) => {
     if (req.body.password !== req.body.passwordCheck) throw("Passwords Do Not Match");
     if (await User.findOne({username: req.body.username})) throw("Username Must Be Unique");
     if (await User.findOne({profileName: req.body.profileName})) throw("Profile Name Must Be Unique");
-    await User.create({username:req.body.username, profileName: req.body.profileName, password: req.body.password, bio:"", correctGuesses: 0, incorrectGuesses: 0, fools: 0, incorrectFools: 0});
-    res.redirect("/feed");
+    await User.create({username:req.body.username, profileName: req.body.profileName, password: bcrypt.hashSync(req.body.password, 12), bio:"", correctGuesses: 0, incorrectGuesses: 0, fools: 0, incorrectFools: 0});
+    res.redirect("/auth/sign-in");
 } catch (error) {
     console.log(error);
     res.render("sign-up.ejs", {errorMessage:error});
