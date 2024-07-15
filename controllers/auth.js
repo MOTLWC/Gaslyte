@@ -16,13 +16,23 @@ router.get("/sign-up", (req, res) => {
 });
 
 router.post("/sign-in", (req,res) => {
-    console.log("Sign In");
-    console.log(req.body);
+    try {
+        console.log("Sign In");
+        console.log(req.body);
+    } catch (error) {
+        console.log(error);
+        res.redirect("/auth/sign-in");
+    }
 });
 
 router.post("/sign-up", (req,res) => {
+    try{
     console.log("Sign Up");
     console.log(req.body);
+} catch (error) {
+    console.log(error);
+    res.redirect("/auth/sign-up");
+}
 });
 
 // Export Module
