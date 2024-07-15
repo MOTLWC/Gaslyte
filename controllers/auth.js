@@ -16,11 +16,13 @@ router.get("/sign-up", (req, res) => {
 });
 
 router.post("/sign-in", (req,res) => {
-
+    console.log("Sign In");
+    console.log(req.body);
 });
 
 router.post("/sign-up", (req,res) => {
-    
+    console.log("Sign Up");
+    console.log(req.body);
 });
 
 // Export Module
