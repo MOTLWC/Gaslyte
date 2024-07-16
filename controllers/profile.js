@@ -9,7 +9,8 @@ const router = express.Router();
 
 // Routes
 router.get("/:profileId", async (req, res) => {
-    res.render("/account.ejs", await User.findById(profileId))
+    console.log(await User.findById(req.params.profileId))
+    res.render("account.ejs", await User.findById(req.params.profileId))
 });
 
 // Export Module
