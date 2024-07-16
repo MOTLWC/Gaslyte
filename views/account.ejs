@@ -3,12 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 <body>
-    <%- include("./templates/backArrow.ejs") %>
-    <%= username%>
-    <%= profileName %>
-<%= _id %>
+    <header>
+        <%- include("./templates/backArrow.ejs") %>
+        <h2><%= profileName %></h2>
+    </header>
+    <main>
+        <div>
+            <textBox><%= bio? bio: "No Bio? That's Dull ;-;" %></textBox>
+            <h3>User Stats</h3>
+            <ul>
+                <li>Fools : <%= (fools + incorrectFools)? `${(fools / (fools + incorrectFools))*100}%`: "Yet to make a post I see, Cringe..."%></li>
+                <li>Correct Guesses : <%= correctGuesses %></li>
+                <li>Total Guesses : <%= correctGuesses + incorrectGuesses %></li>
+            </ul>
+        </div>
+        <div>
+            <a href="/feed?user:<%= _id %>">See all posts</a>
+        </div>
+        
+        <% if (user._id == _id) { %>
+         <p>Oh BTW double click to edit your account</p>
+        <% } %>
+    </main>
 </body>
 </html>
