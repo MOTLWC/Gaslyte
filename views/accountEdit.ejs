@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <header>
+        <%- include("./templates/backArrow.ejs") %>
+        <h2>Edit Profile</h2>
+    </header>
+    <main>
+        <div>
+            <h3>Username: <%= username %></h3>
+        </div>
+        <form method="POST" action="/profile/<%= _id %>">
+            <lable for="profileNameInput"> What users see your name as:</lable>
+            <input value="<%= profileName %>" name="profileName" type="String" id="profileNameInput">
+            <label for="bioInput">Bio:</label>
+            <input value="<%= bio %>" name="bio" type="String" id="bioInput">
+            <%- include("./templates/submitArrow.ejs") %>
+        </form>
+    </main>
+</body>
+</html>

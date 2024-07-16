@@ -8,11 +8,11 @@
 <body>
     <header>
         <%- include("./templates/backArrow.ejs") %>
-        <h2><%= profileName %></h2>
+        <h2 id="profileName"><%= profileName %></h2>
     </header>
     <main>
         <div>
-            <textBox><%= bio? bio: "No Bio? That's Dull ;-;" %></textBox>
+            <textBox id="bioText"><%= bio? bio: "No Bio? That's Dull ;-;" %></textBox>
             <h3>User Stats</h3>
             <ul>
                 <li>Fools : <%= (fools + incorrectFools)? `${(fools / (fools + incorrectFools))*100}%`: "Yet to make a post I see, Cringe..."%></li>
@@ -25,7 +25,7 @@
         </div>
         
         <% if (user._id == _id) { %>
-         <p>Oh BTW double click to edit your account</p>
+         <a href="/profile/<%= user._id %>/edit">Edit your profile</p>
         <% } %>
     </main>
 </body>

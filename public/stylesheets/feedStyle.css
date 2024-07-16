@@ -1,0 +1,17 @@
+#menuToggle{ 
+    background-color: rgb(150, 150, 150);
+    width:20px;
+    height: 50px;
+}
+
+#sideMenu{
+    display:flex;
+    position: fixed;
+    top: 50px;
+    left: 0;}
+
+#menuElements{
+    min-width: 150px;
+    aspect-ratio:2/1;
+    background-color: rgb(128, 128, 128);
+}

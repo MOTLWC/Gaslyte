@@ -25,6 +25,9 @@ app.use(morgan("dev"));
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true, store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }) }));
 app.use(localizeUserdata)
 
+// Attaching scripts
+app.use(express.static("./public"));
+
 // Controllers
 
 app.use("/auth", authController);
