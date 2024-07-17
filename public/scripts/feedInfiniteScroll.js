@@ -10,9 +10,9 @@ const shownPosts = [];
 
 async function sendUrlQuery() {
     try {
-        shownPosts.push(nextpost[0]);
-        const newPost = await fetch(`/feed/post/${nextPosts.shift()}`);
-        mainFeed.innerHTML = newPost;
+        shownPosts.push(nextPosts[0]);
+        const newPost = await fetch(`/feed/post/get/${nextPosts.shift()}`);
+        mainFeed.innerHTML += await newPost.text();
     } catch (error) {
         console.log(error);
     }
