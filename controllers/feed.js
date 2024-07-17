@@ -1,6 +1,8 @@
 // Library Imports
 const express = require("express");
+const ejs = require("ejs")
 const mongoose = require("mongoose");
+const path = require("path");
 
 // Local Imports 
 const checkSession = require("../middleware/check-session.js");
@@ -22,7 +24,7 @@ router.get("/post/get/:postId", async (req, res) => {
             user:await User.findById(postData.userId), 
             post: postData,
         };
-        res.send();
+        res.send(await ejs.renderFile(path.join("views/templates", "post.ejs"), data));
     } catch (error) {
         console.log(error);
         res.send(error.message);
