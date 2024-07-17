@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Post</title>
+</head>
+<body>
+    <h1>Weaving Lies OR Sharing Stories?</h1>
+    <form action="/feed/post/add" method="post">
+        <label for="inputTitle">Post Header</label>
+        <input id="inputTitle" type="String" name="title">
+        
+        <label for="inputContent">Main text</label>
+        <input id="inputContent" type="String" name="content">
+        
+        <label for="inputTags">What Tags go with this post?</label>
+        <input id="inputTags" type="String" name="nsfw">
+        
+        <label for="inputNSFW">Is It NSFW?</label>
+        <input id="inputNSFW" type="checkbox" name="tags">
+        
+        <label for="inputTrueFalse">Is it True?</label>
+        <input id="inputTrueFalse" type="checkbox" name="trueFalse">
+        
+        <%- include("./templates/submitArrow.ejs") %>
+    </form>
+</body>
+</html>

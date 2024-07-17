@@ -25,6 +25,9 @@ router.get("/post/:postId", async (req, res) => {
 router.use(checkSession);
 // ?
 //! ADD
+router.get("/post/add", (req, res) => {
+
+});
 
 // Export Module
 module.exports = router;

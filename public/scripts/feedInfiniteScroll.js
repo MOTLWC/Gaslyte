@@ -1,9 +1,9 @@
 const sideMenu = document.getElementById("sideMenu");
 const menuElements = document.getElementById("menuElements");
 const menuToggle = document.getElementById("menuToggle");
+const mainFeed = document.getElementById("mainFeed");
 
 menuToggle.addEventListener("click", toggleMenuElements);
-
 
 const nextPosts = [];
 const shownPosts = [];
@@ -12,7 +12,7 @@ async function sendUrlQuery() {
     try {
         shownPosts.push(nextpost[0]);
         const newPost = await fetch(`/feed/post/${nextPosts.shift()}`);
-
+        mainFeed.innerHTML = newPost;
     } catch (error) {
         console.log(error);
     }
