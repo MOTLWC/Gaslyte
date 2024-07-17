@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Weaving Lies OR Sharing Stories?</h1>
+    <%- include("./templates/backArrow.ejs") %>
     <form action="/feed/post/add" method="post">
         <label for="inputTitle">Post Header</label>
         <input id="inputTitle" type="String" name="title">
@@ -15,10 +16,10 @@
         <input id="inputContent" type="String" name="content">
         
         <label for="inputTags">What Tags go with this post?</label>
-        <input id="inputTags" type="String" name="nsfw">
+        <input id="inputTags" type="String" name="tags">
         
         <label for="inputNSFW">Is It NSFW?</label>
-        <input id="inputNSFW" type="checkbox" name="tags">
+        <input id="inputNSFW" type="checkbox" name="nsfw">
         
         <label for="inputTrueFalse">Is it True?</label>
         <input id="inputTrueFalse" type="checkbox" name="trueFalse">
