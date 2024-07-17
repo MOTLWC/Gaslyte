@@ -24,7 +24,5 @@ async function getNextPosts(){
 
 function toggleMenuElements() {
     console.log("running")
-    if (menuElements.hidden) return menuElements.removeAttribute("hidden");
-    console.log("hiding")
-    menuElements.setAttribute("hidden", true)
+    menuElements.style.display = (menuElements.style.display === "flex")? "none" : "flex";
 }

@@ -11,7 +11,11 @@
     left: 0;}
 
 #menuElements{
-    min-width: 150px;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
     aspect-ratio:2/1;
     background-color: rgb(128, 128, 128);
 }
