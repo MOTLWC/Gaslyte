@@ -17,7 +17,12 @@ router.get("/", (req, res) => {
 //! POST
 router.get("/post/get/:postId", async (req, res) => {
     try {
-        res.send(await User.findById(req.params.postId));
+        const postData = await Post.findById(req.params.postId);
+        const data = {
+            user:await User.findById(postData.userId), 
+            post: postData,
+        };
+        res.send();
     } catch (error) {
         console.log(error);
         res.send(error.message);
