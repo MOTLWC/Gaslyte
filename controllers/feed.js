@@ -4,6 +4,7 @@ const express = require("express");
 // Local Imports 
 const checkSession = require("../middleware/check-session.js");
 const User = require("../models/user");
+const Post = require("../models/post.js");
 
 // Controller Setup
 const router = express.Router();
@@ -34,12 +35,19 @@ router.get("/post/add", (req, res) => {
 });
 
 router.post("/post/add", async (req, res) => {
-    const newPost = req.body;
-    console.log(newPost);
-    newPost.createdDate = new Date();
-    newPost.nsfw = (newPost.nsfw === "on")? true : false ;
-    newPost.trueFalse = (newPost.trueFalse === "on")? true : false;
-    console.log(newPost);
+    try {
+        const newPost = req.body;
+        console.log(newPost);
+        newPost.createdDate = new Date();
+        newPost.nsfw = (newPost.nsfw === "on")? true : false ;
+        newPost.trueFalse = (newPost.trueFalse === "on")? true : false;
+        console.log(newPost);
+        await Post.create(newPost);
+        res.redirect(`/feed`);
+    } catch (error) {
+        console.log(error);
+        res.render("add-post.ejs", {errorMessage : error.message});
+    }
 });
 
 // Export Module

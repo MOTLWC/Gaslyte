@@ -8,6 +8,9 @@
 <body>
     <h1>Weaving Lies OR Sharing Stories?</h1>
     <%- include("./templates/backArrow.ejs") %>
+    <% if (typeof(errorMessage) !== "undefined") { %>
+        <p><%= errorMessage %></p>
+    <% } %>
     <form action="/feed/post/add" method="post">
         <label for="inputTitle">Post Header</label>
         <input id="inputTitle" type="String" name="title">
