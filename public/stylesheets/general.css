@@ -1,3 +1,18 @@
 body{
-    background-color: red;
+    background-color: #d4ffe2;
+}
+input{
+    background-color: #ecf0f1;
+    border: 0px;
+    border-radius: 3px;
+    color: #2b2d42;
+    outline:none;
+}
+
+input:focus, input:hover{
+    border: 2px solid #f8c630;
+}
+
+.highlight{
+    background-color: #cdfff8;
 }
