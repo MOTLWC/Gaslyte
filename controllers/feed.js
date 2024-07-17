@@ -1,5 +1,6 @@
 // Library Imports
 const express = require("express");
+const mongoose = require("mongoose");
 
 // Local Imports 
 const checkSession = require("../middleware/check-session.js");
@@ -41,6 +42,8 @@ router.post("/post/add", async (req, res) => {
         newPost.createdDate = new Date();
         newPost.nsfw = (newPost.nsfw === "on")? true : false ;
         newPost.trueFalse = (newPost.trueFalse === "on")? true : false;
+        newPost.userId = new mongoose.Types.ObjectId(req.session.user._id);
+        newPost.tags = newPost.tags.toLowerCase().split(", " );
         console.log(newPost);
         await Post.create(newPost);
         res.redirect(`/feed`);

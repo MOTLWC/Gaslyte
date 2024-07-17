@@ -35,6 +35,7 @@ const postSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
+    createdDate: Date,
     comments: [commentSchema],
     likedBy: {
         type: [mongoose.Schema.Types.ObjectId],
