@@ -1,8 +1,9 @@
 // Library Imports
 const express = require("express");
-const User = require("../models/user");
 
-// Model Imports 
+// Local Imports 
+const checkSession = require("../middleware/check-session.js");
+const User = require("../models/user");
 
 // Controller Setup
 const router = express.Router();
@@ -20,6 +21,9 @@ router.get("/post/:postId", async (req, res) => {
         res.send(error.message);
     }
 });
+// ? I want non users to see posts but not iteract
+router.use(checkSession);
+// ?
 //! ADD
 
 // Export Module

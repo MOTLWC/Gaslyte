@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="/stylesheets/feedStyle.css">
 </head>
 <body>
-    <a href="/auth/sign-in">sign in</a>
-    <a href="/auth/sign-up">sign up</a>
-    <a href="/profile/<%= user._id %>">Your Profile</a>
+    <% if (typeof(user) === "undefined") { %>
+        <a href="/profile/<%= user._id %>">Your Profile</a>
+    <% } else{%>
+        <a href="/auth/sign-in">sign in</a>
+        <a href="/auth/sign-up">sign up</a>
+    <% } %>
     <div id="sideMenu" >
         <div id="menuElements" hidden>
         </div>
