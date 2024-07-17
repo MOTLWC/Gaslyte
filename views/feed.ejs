@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/stylesheets/feedStyle.css">
 </head>
 <body>
-    <% if (typeof(user) === "undefined") { %>
+    <% if (typeof(user) === "undefined" && typeof(user._id) === "undefined") { %>
         <a href="/profile/<%= user._id %>">Your Profile</a>
     <% } else{%>
         <a href="/auth/sign-in">sign in</a>
