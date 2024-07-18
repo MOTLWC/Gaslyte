@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 // Local Imports 
-const checkSession = require("../middleware/check-session.js");
 const User = require("../models/user");
 const Post = require("../models/post.js");
 
@@ -30,9 +29,6 @@ router.get("/post/get/:postId", async (req, res) => {
         res.send(error.message);
     }
 });
-// ? I want non users to see posts but not iteract
-router.use(checkSession);
-// ?
 //! ADD
 router.get("/post/add", (req, res) => {
     try {

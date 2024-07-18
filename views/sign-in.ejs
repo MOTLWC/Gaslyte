@@ -6,22 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <%- include("./templates/head.ejs")  %>
+    <link rel="stylesheet" href="/stylesheets/authStyle.css"
 </head>
 
 <body>
+    <div id="containerMain" class="highlight" >
     <% if (typeof(errorMessage) !== "undefined") { %>
         <h3 class="error">
             <%= errorMessage %>
         </h3>
         <% } %>
-            <form method="POST" class="highlight" action="/auth/sign-in">
+            <form id="containerForm" method="POST" action="/auth/sign-in">
                 <lable for="username">Username</lable>
                 <input id="username" name="username" type="String">
                 <lable for="password">Password</lable>
                 <input id="password" name="password" type="password">
-                <lable for="submit">Submit</lable>
-                <input id="submit" type="submit">
+                <lable hidden for="submit">Submit</lable>
+                <%- include("./templates/submitArrow.ejs") %>
             </form>
+        </div>
 </body>
 
 </html>

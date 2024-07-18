@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feed</title>
     <script defer src="/scripts/feedInfiniteScroll.js"></script>
     <link rel="stylesheet" href="./stylesheets/feedStyle.css">
 </head>
 <body>
     <div id="sideMenu" >
         <div id="menuElements" >
-            <% if (typeof(user) === "undefined" && typeof(user._id) === "undefined") { %>
-                <a hidden href="/profile/<%= user._id %>">Your Profile</a>
-            <% } else{%>
-                <a href="/auth/sign-in">sign in</a>
-                <a href="/auth/sign-up">sign up</a>
-            <% } %>
+            <a href="/profile/<%= user._id %>">Your Profile</a>
         </div>
         <div id="menuToggle">
         </div>

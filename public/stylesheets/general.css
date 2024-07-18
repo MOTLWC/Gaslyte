@@ -15,4 +15,20 @@ input:focus, input:hover{
 
 .highlight{
     background-color: #cdfff8;
+    width: fit-content;
+    padding: 40px;
+    border:solid 2px #9d69a3;
+    border-radius: 6px;
+    margin: 50px;
+}
+
+.error{
+    font: bold 30px;
+    color: rgb(255, 37, 81);
+    background-color: rgba(216, 78, 105, 0.5);
+    padding: 15px;
+    width:fit-content;
+    outline: solid crimson 2px;
+    border-radius: 3px;
+    margin: 30px;
 }

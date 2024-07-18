@@ -1,0 +1,19 @@
+body{
+    height: 70vh;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+#containerMain{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#containerForm{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height:150px;
+}
