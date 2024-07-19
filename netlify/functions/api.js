@@ -20,6 +20,8 @@ const localizeUserdata = require("../../middleware/localize-user-data.js")
 // Basic Setup
 const app = express();
 
+mongoose.connect(process.env.MONGODB_URI);
+
 // Middleware
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -56,7 +58,9 @@ app.get("/", (req, res) => {
 
 // init();
 
-mongoose.connect(process.env.MONGODB_URI);
+
 // mongoose.connection.on("connected", () => console.log("Connected"));
+
+
 
 module.exports.handler = serverless(app)
