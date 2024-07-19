@@ -4,27 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up</title>
+    <%- include("./templates/head.ejs")  %>
+    <link rel="stylesheet" href="/stylesheets/authStyle.css">
 </head>
 
 <body>
-    <% if (typeof(errorMessage) !== "undefined") { %>
+    <% if (typeof(errorMessage) !=="undefined" ) { %>
         <h3 class="error">
             <%= errorMessage %>
         </h3>
         <% } %>
-            <form method="POST" action="/auth/sign-up">
-                <lable for="username">Username</lable>
-                <input id="username" name="username" type="String">
-                <lable for="profileName">Profile Name</lable>
-                <input id="profileName" name="profileName" type="String">
-                <lable for="password">Password</lable>
-                <input id="password" name="password" type="password">
-                <lable for="passwordCheck">Password Check</lable>
-                <input id="passwordCheck" name="passwordCheck" type="password">
-                <lable for="submit">Submit</lable>
-                <input id="submit" type="submit">
-            </form>
+            <div id="containerMain" class="highlight">
+                <form id="containerForm" method="POST" action="/auth/sign-up">
+                    <lable class="formItem" for="username">Username</lable>
+                    <input id="username" name="username" type="String">
+                    <lable class="formItem" for="profileName">Profile Name</lable>
+                    <input id="profileName" name="profileName" type="String">
+                    <lable class="formItem" for="password">Password</lable>
+                    <input id="password" name="password" type="password">
+                    <lable class="formItem" for="passwordCheck">Password Check</lable>
+                    <input id="passwordCheck" name="passwordCheck" type="password">
+                    <lable class="formItem" for="submit">Submit</lable>
+                    <input id="submit" type="submit">
+                </form>
+            </div>
+            <div id="spacer"></div>
 </body>
 
 </html>

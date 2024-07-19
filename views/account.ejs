@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title><%= profileUser.profileName %></title>
+    <%- include("./templates/head.ejs") %>
+    <link rel="stylesheet">
 </head>
 <body>
     <header>
         <%- include("./templates/backArrow.ejs") %>
-        <h2 id="profileName"><%= profileName %></h2>
+        <h2 id="profileName"><%= profileUser.profileName %></h2>
     </header>
     <main>
-        <div>
-            <textBox id="bioText"><%= bio? bio: "No Bio? That's Dull ;-;" %></textBox>
+        <div class="highlight">
+            <textBox id="bioText"><%= profileUser.bio? profileUser.bio: "No Bio? That's Dull ;-;" %></textBox>
             <h3>User Stats</h3>
             <ul>
-                <li>Fools : <%= (fools + incorrectFools)? `${(fools / (fools + incorrectFools))*100}%`: "Yet to make a post I see, Cringe..."%></li>
-                <li>Correct Guesses : <%= correctGuesses %></li>
-                <li>Total Guesses : <%= correctGuesses + incorrectGuesses %></li>
+                <li>Fools : <%= (profileUser.fools + profileUser.incorrectFools)? `${(profileUser.fools / (profileUser.fools + profileUser.incorrectFools))*100}%`: "Yet to make a post I see, Cringe..."%></li>
+                <li>Correct Guesses : <%= profileUser.correctGuesses %></li>
+                <li>Total Guesses : <%= profileUser.correctGuesses + user.incorrectGuesses %></li>
             </ul>
         </div>
-        <div>
-            <a href="/feed?user:<%= _id %>">See all posts</a>
-        </div>
-        
-        <% if (user._id == _id) { %>
-         <a href="/profile/<%= user._id %>/edit">Edit your profile</p>
+        <% if (user._id == profileUser._id) { %>
+         <a href="/profile/<%= user._id %>/edit">Edit your profile</a>
         <% } %>
+            <div class="highlight">
+    <h3><%= profileUser._id === user._id? "Your" : "Their" %> Posts</h3>
+    <ul>
+        <% userPosts.forEach(post => { %>
+            <li>
+                <h4><%= post.title %></h4>
+                <%if (user._id === profileUser._id){  %>
+                    <a href="/post/<%= post._id %>/delete">DELETE POST</a>
+                    <% } %>
+            </li>
+        <% }) %>
+    </ul>
+</div>
     </main>
 </body>
 </html>

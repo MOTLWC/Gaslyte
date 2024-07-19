@@ -18,10 +18,6 @@ const userSchema = new mongoose.Schema({
   bio: {
     type: String,
   },
-  posts: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Post",
-  }],
   correctGuesses: Number,
   incorrectGuesses: Number,
   fools: Number,

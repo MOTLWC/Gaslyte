@@ -19,3 +19,31 @@
     aspect-ratio:2/1;
     background-color: rgb(128, 128, 128);
 }
+
+#interactionSection{
+    width:90%;
+    height:10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+header{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#pageTitle{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.interactionDiv{
+outline: 2px #163f6e6e solid;
+border-radius: 6px;
+padding: 5px;
+width: auto;
+height:min-content;
+}

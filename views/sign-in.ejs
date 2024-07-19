@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <%- include("./templates/head.ejs")  %>
-    <link rel="stylesheet" href="/stylesheets/authStyle.css"
+    <link rel="stylesheet" href="/stylesheets/authStyle.css">
 </head>
 
 <body>
-    <div id="containerMain" class="highlight" >
     <% if (typeof(errorMessage) !== "undefined") { %>
         <h3 class="error">
             <%= errorMessage %>
         </h3>
         <% } %>
+    <div id="containerMain" class="highlight" >
             <form id="containerForm" method="POST" action="/auth/sign-in">
                 <lable for="username">Username</lable>
                 <input id="username" name="username" type="String">
@@ -25,6 +25,7 @@
                 <%- include("./templates/submitArrow.ejs") %>
             </form>
         </div>
+    <div id="spacer"></div>
 </body>
 
 </html>

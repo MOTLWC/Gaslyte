@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed</title>
+    <%- include("./templates/head.ejs")  %>
     <script defer src="/scripts/feedInfiniteScroll.js"></script>
     <link rel="stylesheet" href="./stylesheets/feedStyle.css">
 </head>
@@ -16,7 +17,6 @@
                 <select id="filterInput" name="filter">
                     <option selected value="newest">Newest</option>
                     <option value="oldest">Oldest</option>
-                    <option value="liked">Most Liked</option>
                 </select>
                 <div id="nsfwDiv">
                 <label for="nsfwToggle">NSFW Content</label>

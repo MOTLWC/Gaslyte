@@ -13,9 +13,36 @@ const router = express.Router();
 
 // Routes
 router.get("/", (req, res) => {
+    console.log(String(req.url))
+    if(String(req.url) === "/"){
+        res.redirect("/feed?filter=newest")
+    }
+    else{
     res.render("feed.ejs");
+    }
 });
 //! POST
+
+router.post("/post/get/list", async (req, res) => {
+    console.log(req.body)
+    let shownPosts = [];
+    if (req.body.shownPosts){
+    shownPosts = req.body.shownPosts.split(",").map((id) => new mongoose.Types.ObjectId(id));
+    }
+    let sortVariable;
+    switch(req.body.filter){
+        case("newest"):
+        sortVariable = {createdDate : 1};
+        break;
+        case("oldest"):
+        sortVariable = {createdDate : -1};
+        break;
+    }
+    const returnValue = await Post.find({_id: {$nin: shownPosts}},{ sort: sortVariable , projection: {_id: 1}}).limit(10);
+    console.log(returnValue);
+    res.send(returnValue);
+});
+
 router.get("/post/get/:postId", async (req, res) => {
     try {
         const postData = await Post.findById(req.params.postId);
@@ -29,6 +56,7 @@ router.get("/post/get/:postId", async (req, res) => {
         res.send(error.message);
     }
 });
+
 //! ADD
 router.get("/post/add", (req, res) => {
     try {

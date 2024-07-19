@@ -1,8 +1,8 @@
 body{
-    height: 70vh;
     display:flex;
     justify-content: center;
     align-items:center;
+    flex-direction: column;
 }
 
 #containerMain{
@@ -15,5 +15,13 @@ body{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    height:150px;
+    min-height:150px;
+}
+
+.formItem{
+    margin:6px 0px 2px 0px;
+}
+
+#spacer{
+    min-height: 30vh;
 }

@@ -31,7 +31,7 @@ router.post("/sign-in", async (req,res) => {
             username : userFromDB.username,
             _id: userFromDB._id,
         }
-        req.session.save(() => {res.redirect("/feed");});
+        req.session.save(() => {res.redirect("/feed?filter=newest");});
     } catch (error) {
         console.log(error);
         res.render("sign-in.ejs", {errorMessage:error});

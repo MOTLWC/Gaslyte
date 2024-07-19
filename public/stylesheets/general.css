@@ -1,5 +1,10 @@
 body{
-    background-color: #d4ffe2;
+    height: 100vh;
+    background-image: linear-gradient(#d4ffe2, #cdfff8);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #2b2d42;
+    font-size: medium;
 }
 input{
     background-color: #ecf0f1;
@@ -10,7 +15,7 @@ input{
 }
 
 input:focus, input:hover{
-    border: 2px solid #f8c630;
+    border: 2px solid #9d69a3;
 }
 
 .highlight{

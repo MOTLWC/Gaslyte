@@ -38,7 +38,7 @@ app.use("/profile", profileController);
 // Routes 
 
 app.get("/", (req, res) => {
-    res.redirect("/feed");
+    res.redirect("/feed?filter=newest");
 });
 
 // INIT SECTION
