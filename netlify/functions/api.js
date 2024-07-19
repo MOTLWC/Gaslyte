@@ -48,10 +48,11 @@ app.get("/", (req, res) => {
 async function init() {
     try {
         await mongoose.connect(process.env.MONGODB_URI);
-        module.exports.handler = serverless(app)
         console.log("--CONNECTED--");
     } catch (error) {
         console.log(error);
     }
 }
 init();
+
+module.exports.handler = serverless(app)
