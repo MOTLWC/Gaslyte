@@ -57,6 +57,6 @@ app.get("/", (req, res) => {
 // init();
 
 mongoose.connect(process.env.MONGODB_URI);
-mongoose.connection.on("connected", () => console.log("Connected"));
+// mongoose.connection.on("connected", () => console.log("Connected"));
 
 module.exports.handler = serverless(app)
