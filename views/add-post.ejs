@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make Post</title>
+    <title>Make A Post</title>
+    <%- include("./templates/head.ejs")  %>
+    <link rel="stylesheet" href="/stylesheets/authStyle.css">
 </head>
-<body>
+<body style="justify-content:start;">
     <h1>Weaving Lies OR Sharing Stories?</h1>
     <%- include("./templates/backArrow.ejs") %>
     <% if (typeof(errorMessage) !== "undefined") { %>
-        <p><%= errorMessage %></p>
+        <p class="error"><%= errorMessage %></p>
     <% } %>
-    <form action="/feed/post/add" method="post">
-        <label for="inputTitle">Post Header</label>
+    <form id="containerForm" class="highlight" action="/feed/post/add" method="post">
+        <label class="formItem" for="inputTitle">Post Header</label>
         <input id="inputTitle" type="String" name="title">
         
-        <label for="inputContent">Main text</label>
+        <label class="formItem" for="inputContent">Main text</label>
         <input id="inputContent" type="String" name="content">
         
-        <label for="inputTags">What Tags go with this post?</label>
+        <label class="formItem" for="inputTags">What Tags go with this post?</label>
         <input id="inputTags" type="String" name="tags">
         
-        <label for="inputNSFW">Is It NSFW?</label>
+        <label class="formItem" for="inputNSFW">Is It NSFW?</label>
         <input id="inputNSFW" type="checkbox" name="nsfw">
         
-        <label for="inputTrueFalse">Is it True?</label>
+        <label class="formItem" for="inputTrueFalse">Is it True?</label>
         <input id="inputTrueFalse" type="checkbox" name="trueFalse">
         
         <%- include("./templates/submitArrow.ejs") %>

@@ -41,6 +41,8 @@ app.get("/", (req, res) => {
     res.redirect("/feed?filter=newest");
 });
 
+app.get("*", (req, res) => {res.status(404).render("fourOfour.ejs");});
+
 // INIT SECTION
 async function init() {
     try {

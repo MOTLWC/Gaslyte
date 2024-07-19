@@ -97,4 +97,4 @@ async function onScrollFunction(e) {
         await sendUrlQuery();
     }
 }
-// window.onscroll = throttle(onScrollFunction, 500);
+window.onscroll = throttle(onScrollFunction, 500);

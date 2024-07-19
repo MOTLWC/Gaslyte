@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= profileUser.profileName %></title>
     <%- include("./templates/head.ejs") %>
-    <link rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/authStyle.css">
 </head>
 <body>
     <header>
@@ -31,8 +31,8 @@
         <% userPosts.forEach(post => { %>
             <li>
                 <h4><%= post.title %></h4>
-                <%if (user._id === profileUser._id){  %>
-                    <a href="/post/<%= post._id %>/delete">DELETE POST</a>
+                <%if (user._id == profileUser._id){  %>
+                    <a href="/feed/post/<%= post._id %>/delete">DELETE POST</a>
                     <% } %>
             </li>
         <% }) %>

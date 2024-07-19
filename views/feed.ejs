@@ -12,7 +12,7 @@
     <div id="sideMenu" >
         <div id="menuElements" >
             <a href="/profile/<%= user._id %>">Your Profile</a>
-            <form method="" id="filterForm">
+            <form hidden method="" id="filterForm">
                 <label for="filterInput">Filter</label for="filterInput">
                 <select id="filterInput" name="filter">
                     <option selected value="newest">Newest</option>
@@ -24,6 +24,7 @@
             </div>
             <button type="submit">Apply</button>
         </form>
+        <a href="/feed/post/add">Make A Post</a>
             <a href="/auth/sign-out">Sign Out</a>
         </div>
         <div id="menuToggle">

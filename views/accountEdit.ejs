@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
+    <%- include("./templates/head.ejs")  %>
+    <link rel="stylesheet" href="/stylesheets/authStyle.css">
 </head>
 <body>
     <header>
         <%- include("./templates/backArrow.ejs") %>
         <h2>Edit Profile</h2>
     </header>
-    <main>
+    <main class="highlight">
         <div>
             <h3>Username: <%= username %></h3>
         </div>
-        <form method="POST" action="/profile/<%= _id %>">
+        <form id="containerForm" method="POST" action="/profile/<%= _id %>">
             <lable for="profileNameInput"> What users see your name as:</lable>
             <input value="<%= profileName %>" name="profileName" type="String" id="profileNameInput">
             <label for="bioInput">Bio:</label>

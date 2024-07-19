@@ -42,6 +42,20 @@ router.post("/post/get/list", async (req, res) => {
     console.log(returnValue);
     res.send(returnValue);
 });
+router.get("/post/:postId/delete", async (req, res) => {
+    try{
+    const deletedPost = await Post.findById(req.params.postId);
+    console.log(deletedPost);
+    if (deletedPost.userId == req.session.user._id){
+        await Post.findByIdAndDelete(req.params.postId);
+        console.log("Deleted")
+    }
+    res.redirect(`/profile/${req.session.user._id}`);
+    } catch(error){
+        console.log(error);
+        res.redirect("/");
+    }
+});
 
 router.get("/post/get/:postId", async (req, res) => {
     try {
