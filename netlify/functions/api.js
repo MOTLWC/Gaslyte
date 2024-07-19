@@ -45,14 +45,18 @@ app.get("/", (req, res) => {
 });
 
 // INIT SECTION
-async function init() {
-    try {
-        await mongoose.connect(process.env.MONGODB_URI);
-        console.log("--CONNECTED--");
-    } catch (error) {
-        console.log(error);
-    }
-}
-init();
+// async function init() {
+//     try {
+//         await mongoose.connect(process.env.MONGODB_URI);
+//         console.log("--CONNECTED--");
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// init();
+
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.on("connected", () => console.log("Connected"));
 
 module.exports.handler = serverless(app)
