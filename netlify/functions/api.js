@@ -61,6 +61,6 @@ app.get("/", (req, res) => {
 
 // mongoose.connection.on("connected", () => console.log("Connected"));
 
-
+mongoose.connection.close();
 
 module.exports.handler = serverless(app)
