@@ -20,7 +20,7 @@ const localizeUserdata = require("../../middleware/localize-user-data.js")
 // Basic Setup
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI);
 
 // Middleware
 app.set("view engine", "ejs");
@@ -36,8 +36,8 @@ app.use(express.static("public"));
 // Controllers
 
 app.use("/auth", authController);
-app.use(checkSession);
 app.use("/feed", feedController);
+app.use(checkSession);
 app.use("/profile", profileController);
 
 // Routes 

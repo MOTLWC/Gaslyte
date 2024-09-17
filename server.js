@@ -31,8 +31,8 @@ app.use(express.static("./public"));
 // Controllers
 
 app.use("/auth", authController);
-app.use(checkSession);
 app.use("/feed", feedController);
+app.use(checkSession);
 app.use("/profile", profileController);
 
 // Routes 

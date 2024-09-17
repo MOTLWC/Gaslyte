@@ -7,6 +7,7 @@ const path = require("path");
 // Local Imports 
 const User = require("../models/user");
 const Post = require("../models/post.js");
+const checkSession = require("../middleware/check-session.js")
 
 // Controller Setup
 const router = express.Router();
@@ -24,7 +25,7 @@ router.get("/", (req, res) => {
 //! POST
 
 router.post("/post/get/list", async (req, res) => {
-    console.log(req.body)
+    console.log(req.body) 
     let shownPosts = [];
     if (req.body.shownPosts){
     shownPosts = req.body.shownPosts.split(",").map((id) => new mongoose.Types.ObjectId(id));
@@ -42,20 +43,6 @@ router.post("/post/get/list", async (req, res) => {
     console.log(returnValue);
     res.send(returnValue);
 });
-router.get("/post/:postId/delete", async (req, res) => {
-    try{
-    const deletedPost = await Post.findById(req.params.postId);
-    console.log(deletedPost);
-    if (deletedPost.userId == req.session.user._id){
-        await Post.findByIdAndDelete(req.params.postId);
-        console.log("Deleted")
-    }
-    res.redirect(`/profile/${req.session.user._id}`);
-    } catch(error){
-        console.log(error);
-        res.redirect("/");
-    }
-});
 
 router.get("/post/get/:postId", async (req, res) => {
     try {
@@ -68,6 +55,23 @@ router.get("/post/get/:postId", async (req, res) => {
     } catch (error) {
         console.log(error);
         res.send(error.message);
+    }
+});
+ 
+router.use(checkSession);
+
+router.get("/post/:postId/delete", async (req, res) => {
+    try{
+    const deletedPost = await Post.findById(req.params.postId);
+    console.log(deletedPost);
+    if (deletedPost.userId == req.session.user._id){
+        await Post.findByIdAndDelete(req.params.postId);
+        console.log("Deleted")
+    }
+    res.redirect(`/profile/${req.session.user._id}`);
+    } catch(error){
+        console.log(error);
+        res.redirect("/");
     }
 });
 
