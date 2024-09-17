@@ -25,8 +25,12 @@
             <button type="submit">Apply</button>
         </form>
         <a href="/feed/post/add">Make A Post</a>
+        <% if (user._id) { %>
             <a href="/auth/sign-out">Sign Out</a>
-        </div>
+        <% } else { %>
+            <a href="/auth/sign-in">Sign In</a>
+        <% } %>
+            </div>
         <div id="menuToggle">
         </div>
     </div>
