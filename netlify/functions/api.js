@@ -63,6 +63,6 @@ app.get("*", (req, res) => {res.status(404).render("fourOfour.ejs");});
 
 // mongoose.connection.on("connected", () => console.log("Connected"));
 
-mongoose.connection.close();
+// mongoose.connection.close();
 
 module.exports.handler = serverless(app)
