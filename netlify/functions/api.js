@@ -49,16 +49,16 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {res.status(404).render("fourOfour.ejs");});
 
 // INIT SECTION
-// async function init() {
-//     try {
-//         await mongoose.connect(process.env.MONGODB_URI);
-//         console.log("--CONNECTED--");
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+async function init() {
+    try {
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log("--CONNECTED--");
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-// init();
+init();
 
 
 // mongoose.connection.on("connected", () => console.log("Connected"));
