@@ -6,7 +6,7 @@ const mainFeed = document.getElementById("mainFeed");
 const filterForm = document.getElementById("filterForm");
 
 menuToggle.addEventListener("click", toggleMenuElements);
-filterForm.addEventListener("submit", setFilters);
+// filterForm.addEventListener("submit", setFilters);
 
 let errorBool = false;
 let nextPosts = [];
