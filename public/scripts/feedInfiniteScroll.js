@@ -2,8 +2,9 @@ const sideMenu = document.getElementById("sideMenu");
 const menuElements = document.getElementById("menuElements");
 const menuToggle = document.getElementById("menuToggle");
 const mainFeed = document.getElementById("mainFeed");
+const loadingWheel = document.getElementById("loadingElement")
 
-const filterForm = document.getElementById("filterForm");
+// const filterForm = document.getElementById("filterForm");
 
 menuToggle.addEventListener("click", toggleMenuElements);
 // filterForm.addEventListener("submit", setFilters);
@@ -18,11 +19,15 @@ async function sendUrlQuery() {
         // console.log(errorBool)
         if (errorBool) return;
         if (nextPosts.length === 0) {
+            console.log("Error length = " + nextPosts.length)
             getNextPosts();
+            loadingWheel.style.display = "None"
+            console.log(loadingWheel.getAttribute("display"))
         }else{
             if (nextPosts[0].length < 4){ errorBool = true;
                 return;
             }
+        loadingWheel.style.display = "block"
         // console.log(nextPosts[0].substr(8, 24))
         shownPosts.push(nextPosts[0].substr(8, 24));
         const newPost = await fetch(`/feed/post/get/${nextPosts.shift().substr(8, 24)}`);
@@ -30,7 +35,7 @@ async function sendUrlQuery() {
         }
     } catch (error) {
         errorBool = true;
-        // console.log(error.message);
+        console.log(error.message);
     }
 }
 
