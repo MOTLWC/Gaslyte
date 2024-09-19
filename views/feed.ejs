@@ -12,7 +12,10 @@
     <div id="sideMenu" >
         <div id="menuElements" >
         <% if (user._id) { %>
-            <a href="/profile/<%= user._id %>">Your Profile</a>
+            <a href="/profile/<%= user._id %>">
+                <img id="authIcon" src="/images/authIcon.png"/>
+                <h4>Your Account</h4>    
+            </a>
             <!-- <form hidden method="" id="filterForm">
                 <label for="filterInput">Filter</label for="filterInput">
                 <select id="filterInput" name="filter">
@@ -25,11 +28,19 @@
             </div>
             <button type="submit">Apply</button> -->
         </form>
-        <a href="/feed/post/add">Make A Post</a>
-            <a href="/auth/sign-out">Sign Out</a>
+        <a href="/feed/post/add">
+            <img id="authIcon" src="/images/penIcon.png"/>
+            <h4>Make A Post</h4>    
+        </a>
+            <a href="/auth/sign-out">
+            <img id="authIcon" src="/images/signOutIcon.png"/>
+            <h4>Sign Out</h4>    
+        </a>
         <% } else { %>
-            <a href="/auth/sign-in">Sign In</a>
-            <a href="/auth/sign-up">Sign Up</a>
+            <a href="/auth/sign-in">
+                <img id="authIcon" src="/images/authIcon.png"/>
+                <h4>Sign In</h4>
+            </a>
         <% } %>
             </div>
         <svg id="menuToggle">
